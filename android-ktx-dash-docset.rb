@@ -79,8 +79,8 @@ begin
   content_pathname = Pathname.new content_folder
 
   all_types = File.join(doc_folder, 'alltypes')
-  relative_path = Pathname.new(all_types).relative_path_from(Pathname.new(doc_folder))
-  db.execute(sql_insert %['All Types', 'Guide', Pathname.new(all_types).relative_path_from(Pathname.new(doc_folder))])
+  relative_path = Pathname.new("#{all_types}/index.html").relative_path_from(Pathname.new(doc_folder))
+  db.execute(sql_insert %['All Types', 'Guide', relative_path])
 
   classes = []
   Dir["#{doc_folder}/androidx.*"].each do |path|
